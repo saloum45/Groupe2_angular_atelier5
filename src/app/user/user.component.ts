@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,6 +18,9 @@ export class UserComponent {
   // usersTmp:any=[];
 
   // Methodes
+  constructor(private router:Router){
+
+  }
   switchForm(){
     this.isForm=!this.isForm;
     this.nom="";
@@ -108,6 +112,7 @@ export class UserComponent {
       if (isExisting==1) {
         this.showMessage('success','Thanks','Connexion faite avec succès');
         localStorage.setItem('userOnline',JSON.stringify(email));
+        this.router.navigate(['contact']);
 
       }else{
 
