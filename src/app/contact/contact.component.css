@@ -11,3 +11,10 @@
 #deleteIcon a{
   height: 40px;
 }
+
+
+.formualire
+{
+  height: 500px;
+  overflow: auto;
+}

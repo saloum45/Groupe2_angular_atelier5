@@ -93,6 +93,7 @@ export class UserComponent {
       localStorage.setItem('users',JSON.stringify(usersTmp));
     }
   }
+  
   // la fonction qui verifie si l'utilisateur exite au niveau du localStorage
   isUser(email:any,pass:any){
     let isExisting=0;
