@@ -10,11 +10,12 @@ export class ContactComponent {
   // Attributs
   blocChoice = 0;
   nom = "";
-  prenom="";
-  email="";
-  telephone="";
-  image="";
-  description="";
+  prenom = "";
+  email = "";
+  telephone = "";
+  image = "";
+  description = "";
+  contacts=JSON.parse(localStorage.getItem('contacts') || '[]');
 
 
 
@@ -36,17 +37,17 @@ export class ContactComponent {
       Swal.fire({
         icon: 'success',
         title: 'Thanks',
-        text: 'Inscription faite avec succès, veuillez maintenant vous connectez',
+        text: 'Contact ajouté avec succès',
       })
-      let contact={
-        nom:this.nom,
-        prenom:this.prenom,
-        telephone:this.telephone,
-        email:this.email,
-        image:this.image,
-        description:this.description,
-        createBy:JSON.parse(localStorage.getItem('userOnline')||'{}'),
-        createAt:new Date()
+      let contact = {
+        nom: this.nom,
+        prenom: this.prenom,
+        telephone: this.telephone,
+        email: this.email,
+        image: this.image,
+        description: this.description,
+        createBy: JSON.parse(localStorage.getItem('userOnline') || '{}'),
+        createAt: new Date()
       }
       this.saveContact(contact);
 
@@ -54,14 +55,20 @@ export class ContactComponent {
 
   }
 
-  saveContact(contact:any){
-    if (localStorage.getItem("contacts")==null || localStorage.getItem("contacts")==undefined) {
-      localStorage.setItem("contacts",JSON.stringify([contact]));
-    }else{
+  saveContact(contact: any) {
+    if (localStorage.getItem("contacts") == null || localStorage.getItem("contacts") == undefined) {
+      localStorage.setItem("contacts", JSON.stringify([contact]));
+    } else {
       let contactsTmp;
-      contactsTmp=JSON.parse(localStorage.getItem('contacts')||'[]');
+      contactsTmp = JSON.parse(localStorage.getItem('contacts') || '[]');
       contactsTmp.push(contact)
-      localStorage.setItem('contacts',JSON.stringify(contactsTmp));
+      localStorage.setItem('contacts', JSON.stringify(contactsTmp));
     }
+    this.nom = "";
+    this.prenom = "";
+    this.email = "";
+    this.telephone = "";
+    this.image = "";
+    this.description = "";
   }
 }
