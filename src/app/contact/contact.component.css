@@ -1,0 +1,13 @@
+#card img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+
+#deleteIcon i{
+  font-size: 30px;
+}
+#deleteIcon a{
+  height: 40px;
+}

@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
+  // Attributs
+  blocChoice=0;
 
+
+
+  // Methodes
+
+  changeBloc(choice:any){
+    this.blocChoice=choice;
+  }
 }

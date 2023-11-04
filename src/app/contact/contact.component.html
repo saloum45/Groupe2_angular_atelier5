@@ -1,2 +1,98 @@
-<p>contact works!</p>
-<h2>vous êtes sur la page d'accueil</h2>
+<div class="container mt-5">
+  <div class="d-flex justify-content-between mb-3" id="deleteIcon">
+
+    <a  class="btn btn-secondary "  (click)="changeBloc(1)" >Ajouter</a>
+    <a  class="btn btn-secondary " (click)="changeBloc(0)" >Lister</a>
+    <i class="bi bi-trash3-fill"   (click)="changeBloc(2)" ></i>
+  </div>
+
+
+  <!-- la liste des contacts -->
+ <div class="list-contact" *ngIf="blocChoice==0">
+  <div class="card mt-2" id="card">
+    <h5 class="card-header">Fatou diop Soly</h5>
+    <div class="card-body d-flex">
+
+      <div class="" style="width: 15%;">
+        <img src="https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture-1024x1024.jpg" alt="">
+      </div>
+      <div class="" style="width: 85%;">
+
+        <h5 class="card-title"><i class="bi bi-telephone-fill"></i> 77 885 46 00, <i class="bi bi-envelope"></i> Fatoudiopsoly@gmail.com</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a  class="btn btn-secondary">Modifier</a>
+        <a  class="btn btn-secondary mx-2">Supprimer</a>
+      </div>
+    </div>
+  </div>
+  <div class="card mt-2" id="card">
+    <h5 class="card-header">Fatou diop Soly</h5>
+    <div class="card-body d-flex">
+
+      <div class="" style="width: 15%;">
+        <img src="https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture-1024x1024.jpg" alt="">
+      </div>
+      <div class="" style="width: 85%;">
+
+        <h5 class="card-title"><i class="bi bi-telephone-fill"></i> 77 885 46 00, <i class="bi bi-envelope"></i> Fatoudiopsoly@gmail.com</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a  class="btn btn-secondary">Modifier</a>
+        <a  class="btn btn-secondary mx-2">Supprimer</a>
+      </div>
+    </div>
+  </div>
+  <div class="card mt-2" id="card">
+    <h5 class="card-header">Fatou diop Soly</h5>
+    <div class="card-body d-flex">
+
+      <div class="" style="width: 15%;">
+        <img src="https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture-1024x1024.jpg" alt="">
+      </div>
+      <div class="" style="width: 85%;">
+
+        <h5 class="card-title"><i class="bi bi-telephone-fill"></i> 77 885 46 00, <i class="bi bi-envelope"></i> Fatoudiopsoly@gmail.com</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a  class="btn btn-secondary">Modifier</a>
+        <a  class="btn btn-secondary mx-2">Supprimer</a>
+      </div>
+    </div>
+  </div>
+ </div>
+
+  <!-- Formulaire d'ajout de contact -->
+
+  <div class="w-50 m-auto mt-5" *ngIf="blocChoice==1">
+
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom</label>
+      <input type="text" class="form-control" id="nom"  >
+    </div>
+    <div class="mb-3">
+      <label for="prenom" class="form-label">Prenom</label>
+      <input type="text" class="form-control" id="prenom"  >
+    </div>
+    <div class="mb-3">
+      <label for="prenom" class="form-label">Image(URL)</label>
+      <input type="text" class="form-control" id="image"  >
+    </div>
+    <div class="mb-3">
+      <label for="Numero" class="form-label">Numero</label>
+      <input type="text" class="form-control" id="numero" >
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" placeholder="name@example.com">
+    </div>
+
+    <div class="text-center">
+      <button class="btn btn-secondary w-50" >Ajouter</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div *ngIf="blocChoice==2">
+  je suis la corbeille
+</div>
