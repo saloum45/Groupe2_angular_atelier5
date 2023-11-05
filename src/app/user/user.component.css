@@ -1,0 +1,14 @@
+
+.formualire label{
+  color: #902F2F;
+}
+.formualire button{
+  color: #F9F49E;
+  background-color: #902F2F;
+}
+
+#alert
+{
+  background-color: #902F2F;
+  color: #F9F49E;
+}

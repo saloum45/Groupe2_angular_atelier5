@@ -44,7 +44,7 @@ export class UserComponent {
 
   }
 
-
+  // la fonction qui les champs
   verifierRegister() {
 
     if (this.nom == "" || this.prenom == "" || this.email == "" || this.pass == "" || this.numero == "") {
@@ -89,11 +89,11 @@ export class UserComponent {
     }else{
       let usersTmp;
       usersTmp=JSON.parse(localStorage.getItem('users')||'[]');
-      usersTmp.push(user)
+      usersTmp.push(user);
       localStorage.setItem('users',JSON.stringify(usersTmp));
     }
   }
-  
+
   // la fonction qui verifie si l'utilisateur exite au niveau du localStorage
   isUser(email:any,pass:any){
     let isExisting=0;

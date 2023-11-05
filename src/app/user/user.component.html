@@ -1,14 +1,14 @@
 <!-- <p>user works!</p>
 <p>page de connexion</p> -->
 <div class="container mt-5">
-  <div class="alert alert-light text-center" role="alert" *ngIf="isForm">
+  <div class="alert  text-center" role="alert" id="alert" *ngIf="isForm">
    Formulaire de connexion
   </div>
-  <div class="alert alert-light text-center" role="alert" *ngIf="!isForm">
+  <div class="alert  text-center" role="alert" id="alert" *ngIf="!isForm">
    Formulaire d'inscription
   </div>
   <!-- fomulaire de connexion -->
-  <div class="w-50 m-auto mt-5" *ngIf="isForm">
+  <div class="w-50 m-auto mt-5 formualire" *ngIf="isForm">
 
     <div class="mb-3">
       <label for="email" class="form-label">Email address</label>
@@ -30,7 +30,7 @@
 
   <!-- fomulaire de d'inscription -->
 
-  <div class="w-50 m-auto mt-5" *ngIf="!isForm">
+  <div class="w-50 m-auto mt-5 formualire" *ngIf="!isForm">
 
     <div class="mb-3">
       <label for="nom" class="form-label">Nom</label>
