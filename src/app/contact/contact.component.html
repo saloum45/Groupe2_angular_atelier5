@@ -43,8 +43,8 @@
 
           <a  class="btn " (click)="Modification(contact.id)">Modifier</a>
           <a  class="btn  mx-2" (click)="suppression(contact.id)">Supprimer</a>
-          <span class="badge ">Create by : {{contact.createBy}}</span>
-          <span class="badge  mx-2">Create at : {{contact.createAt}}</span>
+          <span class="badge ">Modified at : </span>
+          <span class="badge  mx-2">Create at : {{contact.createAt|date:'d/M/yyyy, h:mm '}}</span>
         </div>
       </div>
     </div>
