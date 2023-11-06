@@ -135,6 +135,22 @@ export class ContactComponent implements OnInit {
     this.getContactsByUser();
 
   }
+  restaurer(id_contact: any) {
+    // alert('contact '+id_contact+' supprimé')
+    let tab: any;
+    tab = JSON.parse(localStorage.getItem('contacts') || '[]');
+
+    tab.forEach((element: any) => {
+      if (element.id == id_contact) {
+        element.etat = 0;
+        // this.contactsByUser.push(element);
+        console.warn(element);
+      }
+    });
+    localStorage.setItem('contacts', JSON.stringify(tab));
+    this.getContactsByUser();
+
+  }
 
 
 }

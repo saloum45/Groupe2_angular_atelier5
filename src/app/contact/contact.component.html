@@ -101,7 +101,7 @@
           <h5 class="card-title"><i class="bi bi-telephone-fill"></i> {{contact.telephone}}, <i class="bi bi-envelope"></i> {{contact.email}}</h5>
           <p class="card-text">{{contact.description}}</p>
           <div>
-            <a  class="btn mx-2">Restaurer</a>
+            <a  class="btn mx-2" (click)="restaurer(contact.id)">Restaurer</a>
             <!-- <a  class="btn ">Modifier</a> -->
             <!-- <a  class="btn  mx-2" (click)="suppression(contact.id)">Supprimer</a> -->
             <span class="badge ">Create by : {{contact.createBy}}</span>
