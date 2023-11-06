@@ -2,7 +2,11 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); */
 }
+/* .container{
+  box-shadow: 4px 10px 5px #902F2F;
+} */
 
 
 #deleteIcon i{

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -6,7 +7,8 @@ import Swal from 'sweetalert2';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
+
   // Attributs
   blocChoice = 0;
   nom = "";
@@ -15,31 +17,58 @@ export class ContactComponent {
   telephone = "";
   image = "";
   description = "";
-  contacts=JSON.parse(localStorage.getItem('contacts') || '[]');
+  contacts: any;
+  contactsByUser: any;
 
 
 
   // Methodes
+  constructor(private router: Router) {
+
+  }
+  ngOnInit() {
+    this.getContactsByUser();
+  }
+
+  getContactsByUser(){
+    let tab: any[] = [];
+    this.contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
+    this.contacts.forEach((element: any) => {
+      if (element.createBy == JSON.parse(localStorage.getItem('userOnline') || "")) {
+        tab.push(element);
+      }
+    });
+    this.contactsByUser = tab;
+
+  }
+
 
   changeBloc(choice: any) {
     this.blocChoice = choice;
   }
 
   verifierAjout() {
-
+    // let id=0;
     if (this.nom == "" || this.prenom == "" || this.email == "" || this.image == "" || this.telephone == "" || this.description == "") {
       Swal.fire({
         icon: 'error',
         title: 'Sorry',
         text: 'Veuillez saisir tous les champs',
-      })
+      });
     } else {
       Swal.fire({
         icon: 'success',
         title: 'Thanks',
         text: 'Contact ajouté avec succès',
-      })
+      });
+      let id_iterator_getted:any=0;
+      if (localStorage.getItem('id_iterator')==null) {
+        localStorage.setItem('id_iterator',JSON.stringify('1'));
+      }
+      id_iterator_getted=JSON.parse(localStorage.getItem('id_iterator')||'1');
+      localStorage.setItem('id_iterator',JSON.stringify(parseInt(id_iterator_getted)+1));
       let contact = {
+        id: parseInt(id_iterator_getted)+1,
         nom: this.nom,
         prenom: this.prenom,
         telephone: this.telephone,
@@ -47,10 +76,10 @@ export class ContactComponent {
         image: this.image,
         description: this.description,
         createBy: JSON.parse(localStorage.getItem('userOnline') || '{}'),
-        createAt: new Date()
+        createAt: new Date(),
+        etat:0
       }
       this.saveContact(contact);
-
     }
 
   }
@@ -61,7 +90,7 @@ export class ContactComponent {
     } else {
       let contactsTmp;
       contactsTmp = JSON.parse(localStorage.getItem('contacts') || '[]');
-      contactsTmp.push(contact)
+      contactsTmp.push(contact);
       localStorage.setItem('contacts', JSON.stringify(contactsTmp));
     }
     this.nom = "";
@@ -70,5 +99,17 @@ export class ContactComponent {
     this.telephone = "";
     this.image = "";
     this.description = "";
+    this.getContactsByUser();
   }
+
+  // la fonction qui gère la déconnexion
+  deconnexion() {
+    this.router.navigate(['user']);
+  }
+  // la fonction qui gère la suppression
+  suppression(id_contact:any){
+    alert('contact'+id_contact+' cliqué')
+  }
+
+
 }
