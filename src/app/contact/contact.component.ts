@@ -21,8 +21,8 @@ export class ContactComponent implements OnInit {
   contacts: any;
   contactsByUser: any[] = [];
   deletedContactsByUser: any[] = [];
-
-
+  id_contact: any;
+  // buttonAddModifyChoice=true;
 
   // Methodes
   constructor(private router: Router) {
@@ -112,6 +112,7 @@ export class ContactComponent implements OnInit {
     this.image = "";
     this.description = "";
     this.getContactsByUser();
+    this.changeBloc(0);
   }
 
   // la fonction qui gère la déconnexion
@@ -152,5 +153,52 @@ export class ContactComponent implements OnInit {
 
   }
 
+  // la fonction qui met met les valeurs à modifier au niveaux des inputs
+  Modification(id_contact: any) {
+    let tab: any;
+    this.id_contact = id_contact;
+    tab = JSON.parse(localStorage.getItem('contacts') || '[]');
+    this.changeBloc(3);
+    tab.forEach((element: any) => {
+      if (element.id == id_contact) {
+        this.nom = element.nom;
+        this.prenom = element.prenom;
+        this.email = element.email;
+        this.telephone = element.telephone;
+        this.image = element.image;
+        this.description = element.description;
+        // console.warn(element);
+      }
+    });
+    // localStorage.setItem('contacts', JSON.stringify(tab));
+    // this.getContactsByUser();
+  }
+
+  // la fonction qui valide la modification
+  ConfirmModifiaction() {
+    let tab: any;
+    tab = JSON.parse(localStorage.getItem('contacts') || '[]');
+    this.changeBloc(3);
+    tab.forEach((element: any) => {
+      if (element.id == this.id_contact) {
+        element.nom = this.nom;
+        element.prenom = this.prenom;
+        element.email = this.email;
+        element.telephone = this.telephone;
+        element.image = this.image;
+        element.description = this.description;
+        // console.warn(element);
+      }
+    });
+    this.changeBloc(0);
+    localStorage.setItem('contacts', JSON.stringify(tab));
+    this.getContactsByUser();
+    this.nom = "";
+    this.prenom = "";
+    this.email = "";
+    this.telephone = "";
+    this.image = "";
+    this.description = "";
+  }
 
 }

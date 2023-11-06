@@ -41,7 +41,7 @@
         <p class="card-text">{{contact.description}}</p>
         <div>
 
-          <a  class="btn ">Modifier</a>
+          <a  class="btn " (click)="Modification(contact.id)">Modifier</a>
           <a  class="btn  mx-2" (click)="suppression(contact.id)">Supprimer</a>
           <span class="badge ">Create by : {{contact.createBy}}</span>
           <span class="badge  mx-2">Create at : {{contact.createAt}}</span>
@@ -81,9 +81,45 @@
       <textarea class="form-control" id="description" rows="3"  [(ngModel)]="description"></textarea>
     </div>
 
-    <div class="text-center">
+    <div class="text-center" >
       <button class="btn btn-secondary w-50" (click)="verifierAjout()">Ajouter</button>
     </div>
+
+
+  </div>
+  <!-- Formulaire d'ajout de contact -->
+
+  <div class="w-50 m-auto mt-5 formualire" *ngIf="blocChoice==3">
+
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom</label>
+      <input type="text" class="form-control" id="nom" [(ngModel)]="nom" >
+    </div>
+    <div class="mb-3">
+      <label for="prenom" class="form-label">Prenom</label>
+      <input type="text" class="form-control" id="prenom"  [(ngModel)]="prenom" >
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">Image(URL)</label>
+      <input type="text" class="form-control" id="image"  [(ngModel)]="image" >
+    </div>
+    <div class="mb-3">
+      <label for="Numero" class="form-label">Numero</label>
+      <input type="text" class="form-control" id="numero"  [(ngModel)]="telephone">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" placeholder="name@example.com"  [(ngModel)]="email">
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" rows="3"  [(ngModel)]="description"></textarea>
+    </div>
+
+    <div class="text-center" >
+      <button class="btn btn-secondary w-50" (click)="ConfirmModifiaction()">Modifier</button>
+    </div>
+
 
   </div>
 
