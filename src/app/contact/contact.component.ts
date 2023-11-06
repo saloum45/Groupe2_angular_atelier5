@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { elementAt } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,7 +19,8 @@ export class ContactComponent implements OnInit {
   image = "";
   description = "";
   contacts: any;
-  contactsByUser: any;
+  contactsByUser: any[]=[];
+  deletedContactsByUser: any[]=[];
 
 
 
@@ -31,6 +33,8 @@ export class ContactComponent implements OnInit {
   }
 
   getContactsByUser(){
+    this.contactsByUser=[];
+    this.deletedContactsByUser=[];
     let tab: any[] = [];
     this.contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
     this.contacts.forEach((element: any) => {
@@ -38,7 +42,15 @@ export class ContactComponent implements OnInit {
         tab.push(element);
       }
     });
-    this.contactsByUser = tab;
+
+   tab.forEach((element:any)=>{
+    if (element.etat==0) {
+
+      this.contactsByUser.push(element);
+    }else if(element.etat==1){
+      this.deletedContactsByUser.push(element);
+    }
+   });
 
   }
 
@@ -108,7 +120,7 @@ export class ContactComponent implements OnInit {
   }
   // la fonction qui gère la suppression
   suppression(id_contact:any){
-    alert('contact'+id_contact+' cliqué')
+    // alert('contact '+id_contact+' supprimé')
   }
 
 
