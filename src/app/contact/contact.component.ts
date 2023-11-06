@@ -19,8 +19,8 @@ export class ContactComponent implements OnInit {
   image = "";
   description = "";
   contacts: any;
-  contactsByUser: any[]=[];
-  deletedContactsByUser: any[]=[];
+  contactsByUser: any[] = [];
+  deletedContactsByUser: any[] = [];
 
 
 
@@ -32,9 +32,9 @@ export class ContactComponent implements OnInit {
     this.getContactsByUser();
   }
 
-  getContactsByUser(){
-    this.contactsByUser=[];
-    this.deletedContactsByUser=[];
+  getContactsByUser() {
+    this.contactsByUser = [];
+    this.deletedContactsByUser = [];
     let tab: any[] = [];
     this.contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
     this.contacts.forEach((element: any) => {
@@ -43,14 +43,14 @@ export class ContactComponent implements OnInit {
       }
     });
 
-   tab.forEach((element:any)=>{
-    if (element.etat==0) {
+    tab.forEach((element: any) => {
+      if (element.etat == 0) {
 
-      this.contactsByUser.push(element);
-    }else if(element.etat==1){
-      this.deletedContactsByUser.push(element);
-    }
-   });
+        this.contactsByUser.push(element);
+      } else if (element.etat == 1) {
+        this.deletedContactsByUser.push(element);
+      }
+    });
 
   }
 
@@ -73,14 +73,14 @@ export class ContactComponent implements OnInit {
         title: 'Thanks',
         text: 'Contact ajouté avec succès',
       });
-      let id_iterator_getted:any=0;
-      if (localStorage.getItem('id_iterator')==null) {
-        localStorage.setItem('id_iterator',JSON.stringify('1'));
+      let id_iterator_getted: any = 0;
+      if (localStorage.getItem('id_iterator') == null) {
+        localStorage.setItem('id_iterator', JSON.stringify('1'));
       }
-      id_iterator_getted=JSON.parse(localStorage.getItem('id_iterator')||'1');
-      localStorage.setItem('id_iterator',JSON.stringify(parseInt(id_iterator_getted)+1));
+      id_iterator_getted = JSON.parse(localStorage.getItem('id_iterator') || '1');
+      localStorage.setItem('id_iterator', JSON.stringify(parseInt(id_iterator_getted) + 1));
       let contact = {
-        id: parseInt(id_iterator_getted)+1,
+        id: parseInt(id_iterator_getted) + 1,
         nom: this.nom,
         prenom: this.prenom,
         telephone: this.telephone,
@@ -89,7 +89,7 @@ export class ContactComponent implements OnInit {
         description: this.description,
         createBy: JSON.parse(localStorage.getItem('userOnline') || '{}'),
         createAt: new Date(),
-        etat:0
+        etat: 0
       }
       this.saveContact(contact);
     }
@@ -119,8 +119,21 @@ export class ContactComponent implements OnInit {
     this.router.navigate(['user']);
   }
   // la fonction qui gère la suppression
-  suppression(id_contact:any){
+  suppression(id_contact: any) {
     // alert('contact '+id_contact+' supprimé')
+    let tab: any;
+    tab = JSON.parse(localStorage.getItem('contacts') || '[]');
+
+    tab.forEach((element: any) => {
+      if (element.id == id_contact) {
+        element.etat = 1;
+        // this.contactsByUser.push(element);
+        console.warn(element);
+      }
+    });
+    localStorage.setItem('contacts', JSON.stringify(tab));
+    this.getContactsByUser();
+
   }
 
 
