@@ -248,7 +248,7 @@ export class ContactComponent implements OnInit {
     });
     if (isHere==0) {
       // alert()
-      this.getContactsByUser();
+      // this.getContactsByUser();
     }else if(isHere==1){
       this.deletedContactsByUser=tab;
     }
