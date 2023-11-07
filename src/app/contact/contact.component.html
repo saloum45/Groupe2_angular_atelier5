@@ -28,7 +28,7 @@
   <!-- la liste des contacts -->
  <div class="list-contact" *ngIf="blocChoice==0">
   <div class="row " id="recherche">
-    <div class="col-4">Rechercher un Contact</div>
+    <div class="col-4">Rechercher un Contact(nom ou prenom)</div>
     <div class="col-8">
       <input type="text" class="form-control" (input)="findInList()" [(ngModel)]="champs_recherche">
     </div>
@@ -131,9 +131,9 @@
 <!-- corbeille  -->
   <div *ngIf="blocChoice==2">
     <div class="row " id="recherche">
-      <div class="col-4">Rechercher un Contact</div>
+      <div class="col-4">Rechercher un Contact(nom ou prenom)</div>
       <div class="col-8">
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" (input)="findInDeletedList()" [ngModel]="champs_recherche">
       </div>
     </div>
     <!-- je suis la corbeille -->

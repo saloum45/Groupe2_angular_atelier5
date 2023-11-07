@@ -204,22 +204,24 @@ export class ContactComponent implements OnInit {
 
   // recherche dans la liste des contacts
   findInList(){
+    if(this.champs_recherche==""){
+      this.getContactsByUser();
+
+    }
     // alert('hi')
     let isHere=0;
     let tab:any[]=[];
     this.contactsByUser.forEach((element:any) => {
-      if (element.nom.toLowerCase().includes(this.champs_recherche.toLowerCase())) {
+      if (element.nom.toLowerCase().includes(this.champs_recherche.toLowerCase()) ||element.prenom.toLowerCase().includes(this.champs_recherche.toLowerCase())) {
         // alert('hello')
         tab.push(element);
         isHere=1;
-      }else{
-        isHere=0;
       }
     });
     if (isHere==0) {
-      this.getContactsByUser();
       // alert()
-    }else{
+      // this.getContactsByUser();
+    }else if(isHere==1){
       this.contactsByUser=tab;
     }
 
@@ -230,6 +232,26 @@ export class ContactComponent implements OnInit {
   // recherche dans la corbeille des contacts
   findInDeletedList(){
     // alert('hi')
+    if(this.champs_recherche==""){
+      this.getContactsByUser();
+
+    }
+    // alert('hi')
+    let isHere=0;
+    let tab:any[]=[];
+    this.deletedContactsByUser.forEach((element:any) => {
+      if (element.nom.toLowerCase().includes(this.champs_recherche.toLowerCase()) ||element.prenom.toLowerCase().includes(this.champs_recherche.toLowerCase())) {
+        // alert('hello')
+        tab.push(element);
+        isHere=1;
+      }
+    });
+    if (isHere==0) {
+      // alert()
+      this.getContactsByUser();
+    }else if(isHere==1){
+      this.deletedContactsByUser=tab;
+    }
   }
 
 }
