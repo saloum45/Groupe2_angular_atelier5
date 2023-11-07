@@ -30,7 +30,7 @@
   <div class="row " id="recherche">
     <div class="col-4">Rechercher un Contact</div>
     <div class="col-8">
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" (input)="findInList()" [(ngModel)]="champs_recherche">
     </div>
   </div>
 

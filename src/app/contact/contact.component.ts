@@ -22,6 +22,7 @@ export class ContactComponent implements OnInit {
   contactsByUser: any[] = [];
   deletedContactsByUser: any[] = [];
   id_contact: any;
+  champs_recherche:any;
   // buttonAddModifyChoice=true;
 
   // Methodes
@@ -199,6 +200,36 @@ export class ContactComponent implements OnInit {
     this.telephone = "";
     this.image = "";
     this.description = "";
+  }
+
+  // recherche dans la liste des contacts
+  findInList(){
+    // alert('hi')
+    let isHere=0;
+    let tab:any[]=[];
+    this.contactsByUser.forEach((element:any) => {
+      if (element.nom.toLowerCase().includes(this.champs_recherche.toLowerCase())) {
+        // alert('hello')
+        tab.push(element);
+        isHere=1;
+      }else{
+        isHere=0;
+      }
+    });
+    if (isHere==0) {
+      this.getContactsByUser();
+      // alert()
+    }else{
+      this.contactsByUser=tab;
+    }
+
+    // alert('hello')
+  }
+
+
+  // recherche dans la corbeille des contacts
+  findInDeletedList(){
+    // alert('hi')
   }
 
 }
