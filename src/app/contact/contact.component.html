@@ -27,6 +27,12 @@
 
   <!-- la liste des contacts -->
  <div class="list-contact" *ngIf="blocChoice==0">
+  <div class="row " id="recherche">
+    <div class="col-4">Rechercher un Contact</div>
+    <div class="col-8">
+      <input type="text" class="form-control">
+    </div>
+  </div>
 
   <div class="card mt-2" id="card" *ngFor="let contact of contactsByUser">
     <h5 class="card-header">{{contact.prenom}} {{contact.nom}}</h5>
@@ -122,9 +128,15 @@
 
 
   </div>
-
+<!-- corbeille  -->
   <div *ngIf="blocChoice==2">
-    je suis la corbeille
+    <div class="row " id="recherche">
+      <div class="col-4">Rechercher un Contact</div>
+      <div class="col-8">
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <!-- je suis la corbeille -->
     <div class="card mt-2" id="card" *ngFor="let contact of deletedContactsByUser">
       <h5 class="card-header">{{contact.prenom}} {{contact.nom}}</h5>
       <div class="card-body d-flex">

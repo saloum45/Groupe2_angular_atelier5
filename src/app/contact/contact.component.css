@@ -62,3 +62,12 @@
   color: #F9F49E;
   background-color: #902F2F;
 }
+
+
+/* recherche */
+#recherche{
+  color: #902F2F;
+}
+#recherche input{
+  border: 2px #902F2F solid;
+}
